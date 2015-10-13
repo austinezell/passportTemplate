@@ -9,8 +9,8 @@ var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGO_URL);
-
-
+var passport = require('passport');
+require('./config/passport');
 var app = express();
 
 // view engine setup
@@ -24,6 +24,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
+
 
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
