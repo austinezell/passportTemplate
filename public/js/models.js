@@ -13,6 +13,8 @@ app.factory('auth', ['$http', '$window', "localStorageKey", '$rootScope', functi
     return $window.localStorage[localStorageKey];
   }
 
+  $http.defaults.headers.common.Authorization = 'Bearer '+ auth.getToken()
+
   auth.isLoggedIn = function(){
     var token = auth.getToken();
     if(token){
@@ -43,7 +45,6 @@ app.factory('auth', ['$http', '$window', "localStorageKey", '$rootScope', functi
     return $http.post('/users/login', user).success(function(data){
       auth.saveToken(data.token);
       $rootScope.loggedIn = auth.isLoggedIn()
-      $state.go('users')
     });
   };
 
@@ -51,6 +52,14 @@ app.factory('auth', ['$http', '$window', "localStorageKey", '$rootScope', functi
     $window.localStorage.removeItem(localStorageKey);
     $rootScope.loggedIn = auth.isLoggedIn()
   };
+
+  auth.test = function(){
+    $http.get('/ping').then(function(data){
+      console.log(data)
+    })
+  }
+
+  auth.test()
 
   $rootScope.loggedIn = auth.isLoggedIn()
   return auth;
