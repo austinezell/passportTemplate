@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
   res.render('index', {title: 'TITLE'});
 });
 
-router.get('/ping', Auth, function(req, res, next){
+router.get('/ping',function(req, res, next){
   res.send('pong')
 })
 
