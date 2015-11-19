@@ -10,7 +10,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGO_URL);
+mongoose.connect(process.env.MONGOLAB_URI || process.env.MONGO_URL || "mongodb://localhost/auth_template");
 var passport = require('passport');
 require('./config/passport');
 var app = express();
