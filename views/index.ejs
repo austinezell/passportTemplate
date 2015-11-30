@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>passporttest</title>
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel='stylesheet' href='/css/style.css' />
   </head>
-  <body ng-app='passportTest'>
+  <body ng-app='passporttest'>
     <ng-include src="'html/general/nav.html'"></ng-include>
     <div class="container">
       <ui-view></ui-view>
@@ -15,10 +15,10 @@
     <script src="/bower_components/angular/angular.min.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
-    <script src="/bower_components/lodash/lodash.min.js"></script>
 
-    <script src="/js/module.js"></script>
-    <script src="/js/models.js"></script>
-    <script src="/js/controllers.js"></script>
+    <script src="./js/module.js"></script>
+    <script src="./js/models.js"></script>
+    <script src="./js/controllers.js"></script>
+    <script src="./js/controllers/navCtrl.js"></script>
   </body>
 </html>

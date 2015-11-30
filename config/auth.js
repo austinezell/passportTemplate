@@ -1,7 +1,17 @@
 'use strict'
 
-var jwt = require('express-jwt');
+let jwt = require('express-jwt');
+let constants = require('./constants')
+let jwtAuth = {}
 
-var auth = jwt({secret: (process.env.SECRET || "secret"), userProperty: 'payload'});
+jwtAuth.middleware = jwt({secret: constants.SECRET, userProperty: 'payload'});
 
-module.exports = auth;
+jwtAuth.getUserId = (authHeader) =>{
+  let jwt = authHeader.replace(/Bearer /, "");
+  let stringPayload = atob(jwt.split('.')[1]);
+  let objectPayload =JSON.parse(stringPayload)
+  let userId = objectPayload._id;
+  return userId;
+}
+
+module.exports = jwtAuth;

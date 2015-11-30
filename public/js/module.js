@@ -1,8 +1,8 @@
 'use strict';
 
-var app = angular.module('passportTest', ['ui.router', 'ui.bootstrap']);
+var app = angular.module('passporttest', ['ui.router', 'ui.bootstrap']);
 
-app.constant('localStorageKey', 'user-token');
+app.constant('localStorageKey', 'passporttest-token');
 
 app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider

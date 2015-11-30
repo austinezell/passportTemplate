@@ -1,5 +1,5 @@
 {
-  "name": "passportTemplate",
+  "name": "noPassportTemplate",
   "version": "0.0.0",
   "private": true,
   "engines": {
@@ -27,8 +27,6 @@
     "mocha": "^2.3.3",
     "mongoose": "^4.1.10",
     "morgan": "~1.6.1",
-    "passport": "^0.3.0",
-    "passport-local": "^1.0.0",
     "serve-favicon": "~2.3.0",
     "supertest": "^1.1.0"
   }

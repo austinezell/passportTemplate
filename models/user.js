@@ -1,10 +1,11 @@
 'use strict'
 
-var mongoose = require('mongoose');
-var crypto = require('crypto')
-var jwt = require('jsonwebtoken');
+let mongoose = require('mongoose');
+let crypto = require('crypto');
+let jwt = require('jsonwebtoken');
+let constants = require('../config/constants');
 
-var UserSchema = new mongoose.Schema({
+let UserSchema = new mongoose.Schema({
   username: {type: String, lowercase: true, unique: true},
   hash: String,
   salt: String
@@ -18,13 +19,13 @@ UserSchema.methods.setPassword = function(password){
 };
 
 UserSchema.methods.validPassword = function(password) {
-  var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
+  const hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
   return this.hash === hash;
 };
 
 UserSchema.methods.generateJWT = function() {
-  var today = new Date();
-  var exp = new Date(today);
+  const today = new Date();
+  const exp = new Date(today);
 
   exp.setDate(today.getDate() + 60);
 
@@ -32,7 +33,7 @@ UserSchema.methods.generateJWT = function() {
     _id: this._id,
     username: this.username,
     exp: parseInt(exp.getTime() / 1000),
-  }, (process.env.SECRET || "secret"));
+  }, (constants.SECRET));
 };
 
 module.exports = mongoose.model('User', UserSchema)

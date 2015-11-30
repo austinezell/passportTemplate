@@ -1,5 +1,6 @@
 # passportTemplate
-simple MEAN template for passport utilizing jwt
+
+Even though I named it passportTemplate, it no longer includes passport. It only authenticates locally, so passport seemed superfluous. 
 
 based majorly off of https://thinkster.io/mean-stack-tutorial#adding-authentication-via-passport
 

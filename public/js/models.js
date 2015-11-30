@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('passportTest');
+var app = angular.module('passporttest');
 
 app.factory('auth', ['$http', '$window', "localStorageKey", '$rootScope', function($http, $window, localStorageKey, $rootScope){
   var auth = {};
