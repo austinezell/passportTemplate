@@ -5,8 +5,10 @@ let crypto = require('crypto');
 let jwt = require('jsonwebtoken');
 let constants = require('../config/constants');
 
+
 let UserSchema = new mongoose.Schema({
   username: {type: String, lowercase: true, unique: true},
+  email: {type: String, required: true, unique: true},
   hash: String,
   salt: String
 })

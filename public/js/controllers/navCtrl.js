@@ -1,9 +1,8 @@
 'use strict';
-let app = angular.module('passporttest');
+app = angular.module('passporttest');
 
-app.controller('navCtrl', function($scope, auth, $state) {
+app.controller('navCtrl', function($scope, Auth, $state) {
   $scope.logout = function (){
-    auth.logOut();
-    $state.go('home');
+    Auth.logOut();
   }
 });

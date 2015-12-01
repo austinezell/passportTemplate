@@ -11,7 +11,7 @@ const constants = require('../config/constants.js')
 let app = require('../app');
 let debug = require('debug');
 let http = require('http');
-
+require('mongoose').connect(constants.MONGO_URL)
 /**
  * Get port from environment and store in Express.
  */

@@ -19,12 +19,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
     .state('users.login', {
       url: '/login',
-      templateUrl: '/html/users/form.html',
+      templateUrl: '/html/users/login.html',
       controller: 'usersCtrl'
     })
     .state('users.register', {
       url: '/register',
-      templateUrl: '/html/users/form.html',
+      templateUrl: '/html/users/register.html',
       controller: 'usersCtrl'
     })
   $urlRouterProvider.otherwise('/');

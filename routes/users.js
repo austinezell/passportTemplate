@@ -14,14 +14,18 @@ router.post('/register', (req, res) =>{
 
   let user = new User();
   user.username= req.body.username;
-  user.fullName= req.body.fullName;
   user.email= req.body.email;
   user.setPassword(req.body.password);
 
-  user.save(function(err, data){
+
+
+  user.save( (err, data) => {
+    console.log(err, data);
     if(err) return res.status(499).send(err)
 
+    console.log(data);
     let jwt = user.generateJWT();
+    console.log(jwt);
     res.send(jwt);
   })
 });

@@ -1,18 +1,18 @@
 <h1>Login</h1>
 <div class="col-sm-4">
-  ​<form ng-submit='submit(user)'>
+  ​<form ng-submit='login(user)'>
     <div align='left' class='row'>
       <div class="col-sm-12">
         Username:
       </div>
       <div align='right' class="col-sm-12">
-        <input type="text" ng-model='user.username'>
+        <input required type="text" ng-model='user.username'>
       </div>
       <div class="col-sm-12">
         Password:
       </div>
       <div align='right' class="col-sm-12">
-        <input type="password" ng-model='user.password'>
+        <input required type="password" ng-model='user.password'>
       </div>
     </div>
     <div class="row">

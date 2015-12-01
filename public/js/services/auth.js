@@ -2,7 +2,7 @@
 
 var app = angular.module('passporttest');
 
-app.service('Auth', ['$http', '$window', "localStorageKey", '$rootScope', function($http, $window, localStorageKey, $rootScope){
+app.service('Auth', ['$http', '$window', "localStorageKey", '$rootScope', '$state', function($http, $window, localStorageKey, $rootScope, $state){
 
   this.saveToken = (token) =>{
     $window.localStorage[localStorageKey] = token;
@@ -22,7 +22,7 @@ app.service('Auth', ['$http', '$window', "localStorageKey", '$rootScope', functi
     }
   };
 
-  this.currentUser = function(){
+  this.currentUser = () =>{
     if(this.isLoggedIn()){
       var token = this.getToken();
       var payload = JSON.parse($window.atob(token.split('.')[1]));
@@ -31,25 +31,33 @@ app.service('Auth', ['$http', '$window', "localStorageKey", '$rootScope', functi
     }
   };
 
-  this.register = function(user){
-    return $http.post('/users/register', user).success(function(data){
-      this.saveToken(data.token);
+  this.register = (user) =>{
+    $http.post('/users/register', user)
+    .then( res => {
+      this.saveToken(res.data);
       $rootScope.loggedIn = this.isLoggedIn()
-    });
+    })
+    .catch(err => {
+      console.log(err);
+    })
   };
 
-  this.logIn = function(user){
-    return $http.post('/users/login', user).success(function(data){
-      this.saveToken(data.token);
-      $rootScope.loggedIn = this.isLoggedIn()
-      $state.go('users')
-    });
+  this.login = (user) =>{
+    $http.post('/users/login', user)
+    .then(res => {
+      this.saveToken(res.data);
+      $rootScope.loggedIn = this.isLoggedIn();
+      $state.go('home');
+    }).catch(err => {
+      console.log(err);
+    })
   };
 
-  this.logOut = function(){
+  this.logOut = () =>{
     $window.localStorage.removeItem(localStorageKey);
-    $rootScope.loggedIn = this.isLoggedIn()
+    $rootScope.loggedIn = this.isLoggedIn();
+    $state.go('home')
   };
 
-  $rootScope.loggedIn = this.isLoggedIn()
+  $rootScope.loggedIn = this.isLoggedIn();
 }])
