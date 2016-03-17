@@ -8,7 +8,7 @@
     .state('home', {
       url: '/',
       templateUrl: '/html/general/home.html',
-      controller: 'homeCtrl'
+      // controller: 'homeCtrl'
     })
     .state('users', {
       abstract: true,
@@ -17,12 +17,12 @@
     .state('users.login', {
       url: '/login',
       templateUrl: '/html/users/login.html',
-      controller: 'usersCtrl'
+      // controller: 'usersCtrl'
     })
     .state('users.register', {
       url: '/register',
       templateUrl: '/html/users/register.html',
-      controller: 'usersCtrl'
+      // controller: 'usersCtrl'
     })
     $urlRouterProvider.otherwise('/');
   };

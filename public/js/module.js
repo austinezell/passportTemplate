@@ -3,8 +3,9 @@
   angular.module('scaffold', [
     'ui.router',
     'ngAnimate',
-    'ngMaterial',
-    'ngAria'
+    'ngMessages',
+    'ngAria',
+    'ngMaterial'
   ])
   .constant('localStorageKey', 'scaffold-token')
 })()

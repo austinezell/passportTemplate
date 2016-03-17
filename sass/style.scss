@@ -1,5 +1,5 @@
-@import 'node_modules/sass-material-colors/sass/sass-material-colors',
-'_reset';
+@import 'node_modules/sass-material-colors/sass/sass-material-colors';
+@import '_reset';
 $primary-dark:   #455A64;
 $primary:        #607D8B;
 $primary-light:  #CFD8DC;
@@ -8,6 +8,19 @@ $accent:         #536DFE;
 $primary-text:   #212121;
 $secondary-text: #727272;
 $divider:        #B6B6B6;
+
+.vertical-table{
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.vertical-table-cell {
+  display: table-cell;
+  height: 100%;
+  width: 100%;
+  vertical-align: middle;
+}
 
 body{
   padding-top: calc(50px + 2rem);
@@ -32,7 +45,7 @@ nav {
       color: $primary-icon;
     }
   }
-  ul.nav-list{
+  .nav-list{
     float: right;
     display: inline-block;
     list-style-type: none;
@@ -49,7 +62,14 @@ nav {
   }
 }
 
-label.auth, input.auth {
-  margin-bottom: 1rem;
-  display: block;
+.form-container{
+  display: inline-block;
+  width: 250px;
+  background-image: linear-gradient(to right top, lighten($primary-light, 25), lighten($primary-light, 15) 5%, $primary-light 50%, lighten($primary-light, 15) 95%, lighten($primary-light, 25)); ;
+  padding: 25px 0;
+  md-input-container{
+    input{
+      background-color: white !important;
+    }
+  }
 }
