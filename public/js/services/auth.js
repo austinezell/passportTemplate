@@ -1,63 +1,60 @@
-'use strict';
+(function(){
+  'use strict';
 
-var app = angular.module('passporttest');
+  angular.module('scaffold')
 
-app.service('Auth', ['$http', '$window', "localStorageKey", '$rootScope', '$state', function($http, $window, localStorageKey, $rootScope, $state){
+  .service('Auth', Auth);
 
-  this.saveToken = (token) =>{
-    $window.localStorage[localStorageKey] = token;
-  };
+  Auth.$inject = ['$http', '$window', "localStorageKey", '$rootScope', '$state']
 
-  this.getToken = () =>{
-    return $window.localStorage[localStorageKey];
-  }
+  function Auth($http, $window, localStorageKey, $rootScope, $state){
 
-  this.isLoggedIn = () =>{
-    var token = this.getToken();
-    if(token){
-      var payload = JSON.parse($window.atob(token.split('.')[1]));
-      return payload.exp > Date.now() / 1000;
-    } else {
-      return false;
+    this.saveToken = (token) =>{
+      $window.localStorage[localStorageKey] = token;
+    };
+
+    this.getToken = () =>{
+      return $window.localStorage[localStorageKey];
     }
-  };
 
-  this.currentUser = () =>{
-    if(this.isLoggedIn()){
+    this.isLoggedIn = () =>{
       var token = this.getToken();
-      var payload = JSON.parse($window.atob(token.split('.')[1]));
+      if(token){
+        var payload = JSON.parse($window.atob(token.split('.')[1]));
+        return payload.exp > Date.now() / 1000;
+      } else {
+        return false;
+      }
+    };
 
-      return payload.username;
-    }
-  };
+    this.register = (user) =>{
+      $http.post('/users/register', user)
+      .then( res => {
+        this.saveToken(res.data);
+        $rootScope.loggedIn = this.isLoggedIn()
+      })
+      .catch(err => {
+        console.error(err);
+      })
+    };
 
-  this.register = (user) =>{
-    $http.post('/users/register', user)
-    .then( res => {
-      this.saveToken(res.data);
-      $rootScope.loggedIn = this.isLoggedIn()
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  };
+    this.login = (user) =>{
+      $http.post('/users/login', user)
+      .then(res => {
+        this.saveToken(res.data);
+        $rootScope.loggedIn = this.isLoggedIn();
+        $state.go('home');
+      }).catch(err => {
+        console.error(err);
+      })
+    };
 
-  this.login = (user) =>{
-    $http.post('/users/login', user)
-    .then(res => {
-      this.saveToken(res.data);
+    this.logOut = () =>{
+      $window.localStorage.removeItem(localStorageKey);
       $rootScope.loggedIn = this.isLoggedIn();
       $state.go('home');
-    }).catch(err => {
-      console.log(err);
-    })
-  };
+    };
 
-  this.logOut = () =>{
-    $window.localStorage.removeItem(localStorageKey);
     $rootScope.loggedIn = this.isLoggedIn();
-    $state.go('home')
-  };
-
-  $rootScope.loggedIn = this.isLoggedIn();
-}])
+  }
+})()

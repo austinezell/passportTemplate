@@ -1,7 +1,12 @@
-'use strict';
+(function(){
+  'use strict';
+  angular.module('scaffold')
+  .controller('homeCtrl', homeCtrl);
 
-var app = angular.module('passporttest');
+  function homeCtrl(){
+    console.log('homeCtrl');
 
-app.controller('homeCtrl', function($scope) {
+    let vm = this;
 
-});
+  }
+})()

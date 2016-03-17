@@ -1,8 +1,14 @@
 'use strict';
-app = angular.module('passporttest');
+(function(){
+  angular.module('scaffold')
+  .controller('navCtrl', navCtrl)
+  
+  navCtrl.$inject = ["Auth"]
 
-app.controller('navCtrl', function($scope, Auth, $state) {
-  $scope.logout = function (){
-    Auth.logOut();
-  }
-});
+  function navCtrl(Auth) {
+    let navVm = this;
+    navVm.logout = function (){
+      Auth.logOut();
+    }
+  };
+})()

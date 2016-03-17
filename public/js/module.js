@@ -1,31 +1,36 @@
 'use strict';
+angular.module('scaffold', [
+  'ui.router',
+  'ngAnimate',
+  'ngMaterial',
+  'ngAria'
+])
+.constant('localStorageKey', 'scaffold-token')
 
-var app = angular.module('passporttest', ['ui.router', 'ui.bootstrap']);
+.config(StateConfig)
 
-app.constant('localStorageKey', 'passporttest-token');
+StateConfig.$inject = ["$stateProvider", "$urlRouterProvider"]
 
-app.config(function($stateProvider, $urlRouterProvider) {
+function StateConfig($stateProvider, $urlRouterProvider) {
   $stateProvider
-    .state('home', {
-      url: '/',
-      templateUrl: '/html/general/home.html',
-      controller: 'homeCtrl'
-    })
-
-
+  .state('home', {
+    url: '/',
+    templateUrl: '/html/general/home.html',
+    controller: 'homeCtrl'
+  })
   .state('users', {
-      abstract: true,
-      templateUrl: '/html/users/users.html'
-    })
-    .state('users.login', {
-      url: '/login',
-      templateUrl: '/html/users/login.html',
-      controller: 'usersCtrl'
-    })
-    .state('users.register', {
-      url: '/register',
-      templateUrl: '/html/users/register.html',
-      controller: 'usersCtrl'
-    })
+    abstract: true,
+    templateUrl: '/html/users/users.html'
+  })
+  .state('users.login', {
+    url: '/login',
+    templateUrl: '/html/users/login.html',
+    controller: 'usersCtrl'
+  })
+  .state('users.register', {
+    url: '/register',
+    templateUrl: '/html/users/register.html',
+    controller: 'usersCtrl'
+  })
   $urlRouterProvider.otherwise('/');
-});
+};

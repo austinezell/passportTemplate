@@ -16,21 +16,14 @@ router.post('/register', (req, res) =>{
   user.username= req.body.username;
   user.email= req.body.email;
   user.setPassword(req.body.password);
-
-
-
   user.save( (err, data) => {
-    console.log(err, data);
     if(err) return res.status(499).send(err)
-
-    console.log(data);
     let jwt = user.generateJWT();
-    console.log(jwt);
     res.send(jwt);
   })
 });
 
-router.post('/login', function(req, res, next){
+router.post('/login', function(req, res){
   if(!req.body.username || !req.body.password){
     return res.status(401).send('Please fill out all fields');
   }
@@ -46,5 +39,14 @@ router.post('/login', function(req, res, next){
     res.send(jwt)
   })
 });
+
+
+router.get('/me', jwtAuth, (req, res)=>{
+  let userId = req.user._id;
+
+  User.findById(userId, (err, user)=>{
+    err ? res.status(499).send(err) : res.send(user);
+  })
+})
 
 module.exports = router;
