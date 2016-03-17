@@ -8,8 +8,9 @@ $accent:         #536DFE;
 $primary-text:   #212121;
 $secondary-text: #727272;
 $divider:        #B6B6B6;
+
 body{
-  padding-top: 50px;
+  padding-top: calc(50px + 2rem);
   overflow-x: hidden;
 }
 nav {
@@ -36,14 +37,19 @@ nav {
     display: inline-block;
     list-style-type: none;
     height: 100%;
-    li {
+    >li {
       display: inline-block;
       padding: calc(25px - 0.6rem) 2rem calc(25px - 0.6rem) 0;
-      a{
+      >a{
         font-size: 1.2rem;
         width: 100%;
         height: 100%;
       }
     }
   }
+}
+
+label.auth, input.auth {
+  margin-bottom: 1rem;
+  display: block;
 }
