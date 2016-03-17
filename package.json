@@ -1,9 +1,9 @@
 {
-  "name": "noPassportTemplate",
+  "name": "scaffold",
   "version": "0.0.0",
   "private": true,
   "engines": {
-    "node": "5.8.x"
+    "node": "~5.8.x"
   },
   "scripts": {
     "test": "mocha test/*",
