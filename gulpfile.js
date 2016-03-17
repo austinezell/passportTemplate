@@ -5,6 +5,8 @@ const clean = require('gulp-clean-css');
 
 gulp.task('default', ['sass', 'watch']);
 
+gulp.task('dev', ['sass']);
+
 gulp.task('sass', function(done){
   gulp.src('./sass/style.scss')
   .pipe(sass())
