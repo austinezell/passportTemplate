@@ -1,36 +1,10 @@
-'use strict';
-angular.module('scaffold', [
-  'ui.router',
-  'ngAnimate',
-  'ngMaterial',
-  'ngAria'
-])
-.constant('localStorageKey', 'scaffold-token')
-
-.config(StateConfig)
-
-StateConfig.$inject = ["$stateProvider", "$urlRouterProvider"]
-
-function StateConfig($stateProvider, $urlRouterProvider) {
-  $stateProvider
-  .state('home', {
-    url: '/',
-    templateUrl: '/html/general/home.html',
-    controller: 'homeCtrl'
-  })
-  .state('users', {
-    abstract: true,
-    templateUrl: '/html/users/users.html'
-  })
-  .state('users.login', {
-    url: '/login',
-    templateUrl: '/html/users/login.html',
-    controller: 'usersCtrl'
-  })
-  .state('users.register', {
-    url: '/register',
-    templateUrl: '/html/users/register.html',
-    controller: 'usersCtrl'
-  })
-  $urlRouterProvider.otherwise('/');
-};
+(function(){
+  'use strict';
+  angular.module('scaffold', [
+    'ui.router',
+    'ngAnimate',
+    'ngMaterial',
+    'ngAria'
+  ])
+  .constant('localStorageKey', 'scaffold-token')
+})()

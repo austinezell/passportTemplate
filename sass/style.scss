@@ -1,0 +1,49 @@
+@import 'node_modules/sass-material-colors/sass/sass-material-colors',
+'_reset';
+$primary-dark:   #455A64;
+$primary:        #607D8B;
+$primary-light:  #CFD8DC;
+$primary-icon:   #FFFFFF;
+$accent:         #536DFE;
+$primary-text:   #212121;
+$secondary-text: #727272;
+$divider:        #B6B6B6;
+body{
+  padding-top: 50px;
+  overflow-x: hidden;
+}
+nav {
+  background-color: $primary-dark;
+  height: 50px;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  .title{
+    display: inline-block;
+    padding: calc(25px - 1rem);
+    font-size: 2rem;
+  }
+  a{
+    transition: all .5s ease;
+    text-decoration: none;
+    color: lighten($accent, 15);
+    &:hover, &:active{
+      color: $primary-icon;
+    }
+  }
+  ul.nav-list{
+    float: right;
+    display: inline-block;
+    list-style-type: none;
+    height: 100%;
+    li {
+      display: inline-block;
+      padding: calc(25px - 0.6rem) 2rem calc(25px - 0.6rem) 0;
+      a{
+        font-size: 1.2rem;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
