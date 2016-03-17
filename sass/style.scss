@@ -62,14 +62,47 @@ nav {
   }
 }
 
-.form-container{
-  display: inline-block;
-  width: 250px;
-  background-image: linear-gradient(to right top, lighten($primary-light, 25), lighten($primary-light, 15) 5%, $primary-light 50%, lighten($primary-light, 15) 95%, lighten($primary-light, 25)); ;
-  padding: 25px 0;
-  md-input-container{
-    input{
-      background-color: white !important;
+#login-modal.revealed{
+  z-index: 1000;
+  background-color: rgba(0,0,0,0.5);
+  .form-container{
+    height: 295px;
+    padding: 25px 0;
+  }
+}
+#login-modal.closing{
+  transition-delay: .5s;
+  .form-container{
+    transition-delay: 0s;
+  }
+}
+
+#login-modal {
+  z-index: -1000;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  position: fixed;
+  transition: all .2s;
+  background-color: transparent;
+  .form-container {
+    background-image: linear-gradient(to right top, lighten($primary-light, 25), lighten($primary-light, 15) 5%, $primary-light 50%, lighten($primary-light, 15) 95%, lighten($primary-light, 25));
+    display: inline-block;
+    position: relative;
+    height: 0px;
+    width: 250px;
+    overflow-y: hidden;
+    transition: all .5s;
+    transition-delay: .2s;
+    .button-dismiss {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    md-input-container{
+      input{
+        background-color: white !important;
+      }
     }
   }
 }
