@@ -1,3 +1,4 @@
 .env
 public/bower_components/
 node_modules/
+public/styles/
