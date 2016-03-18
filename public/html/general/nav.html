@@ -4,33 +4,8 @@
   </header>
   <ul class="nav-list">
     <li ng-if="loggedIn"><a ng-click="logout()">LOGOUT</a></li>
-    <li ng-if"!loggedIn"><a href ng-init="modal=false; closing=false" ng-click="modal=true; closing=false">LOGIN</a></li>
+    <li ng-if"!loggedIn"><a href ng-click="open()">LOGIN</a></li>
   </ul>
 </nav>
 
-
-
-<div  id="login-modal" class="modal vertical-table" ng-class="{revealed: modal, closing: closing}" align="center" ng-click="modal=false; closing=true">
-  <div class="vertical-table-cell">
-    <div class="form-container" click-stop-propagation>
-      <h1 class="md-display-1">Login</h1>
-      ​<form ng-submit='login(user)'>
-        <md-input-container>
-          <label class="auth" for="username">Username:</label>
-          <input class="auth" required type="text" ng-model='user.username'>
-        </md-input-container><br>
-        <md-input-container>
-          <label class="auth" for="password">Password:</label>
-          <input class="auth" required type="password" ng-model='user.password'>
-        </md-input-container><br>
-        <md-button type="submit" class="md-raised md-primary">
-          <span class="md-text">Login</span>
-        </md-button>
-      </form>
-      <md-button class="button-dismiss md-icon-button" aria-label="close" ng-click="modal=false; closing=true">
-        <md-icon md-font-icon="fa-times" class="fa md-accent" aria-hidden="true" ng-style="{'font-size':'25px', height:'25px'}">
-        </md-icon>
-      </md-button>
-    </div>
-  </div>
-</div>
+<scfld-auth-modal></scfld-auth-modal>

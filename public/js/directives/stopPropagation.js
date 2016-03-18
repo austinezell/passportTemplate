@@ -4,7 +4,6 @@
   function clickStopPropagation(){
     return function(scope, element, attr){
       element.bind('click', function(evt){
-        console.log('hi');
         evt.stopPropagation();
       })
     }
