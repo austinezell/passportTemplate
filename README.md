@@ -1,7 +1,5 @@
-# passportTemplate
+# scaffold
 
-Even though I named it passportTemplate, it no longer includes passport. It only authenticates locally, so passport seemed superfluous. 
+Scaffold for generic template. Has Google Material CSS, Angular Material/Animate/Aria/Messages/UI-Router
 
-based majorly off of https://thinkster.io/mean-stack-tutorial#adding-authentication-via-passport
-
-use `npm run setup`
+Color scheme laid-out in /public/js/config/material.js and /sass/style.css
