@@ -21,9 +21,13 @@ $divider:        #B6B6B6;
   width: 100%;
   vertical-align: middle;
 }
-
+html{
+  height: auto;
+}
 body{
-  padding-top: calc(50px + 2rem);
+  padding-top: 50px;
+  max-width: 100vw;
+  height: auto;
   overflow-x: hidden;
 }
 nav {
@@ -113,4 +117,40 @@ nav {
       }
     }
   }
+}
+
+// .ui-view-container {
+//   position: relative;
+//   height: 65px;
+// }
+.about{
+  background-color: white;
+}
+.page{
+  height: calc(100vh - 50px);
+  width: 100vw;
+  border-left: 1px solid $primary;
+}
+
+[ui-view].slide.ng-enter, [ui-view].slide.ng-leave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  transition: all .5s ease-in-out;
+}
+
+[ui-view].slide.ng-enter {
+  transform: translateX(100%);
+}
+
+[ui-view].slide.ng-enter-active {
+  transform: translateX(0);
+}
+
+[ui-view].slide.ng-leave {
+  transform: translateX(0);
+}
+
+[ui-view].slide.ng-leave-active {
+  transform:translateX(0);
 }

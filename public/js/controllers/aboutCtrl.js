@@ -3,11 +3,9 @@
   angular.module('scaffold')
   .controller('homeCtrl', homeCtrl);
 
-  function homeCtrl(){
+  function aboutCtrl(){
 
     let vm = this;
-    console.log(vm);
-    vm.location ={};
 
   }
 })()
