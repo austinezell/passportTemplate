@@ -4,7 +4,7 @@
   </header>
   <ul class="nav-list">
     <li ng-if="loggedIn"><a ng-click="logout()">LOGOUT</a></li>
-    <li ng-if"!loggedIn"><a href ng-click="open()">LOGIN</a></li>
+    <li ng-if"!loggedIn"><a href ui-sref="auth.login" ng-click="open()">LOGIN</a></li>
   </ul>
 </nav>
 
