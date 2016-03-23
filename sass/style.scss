@@ -139,17 +139,23 @@ nav {
   transition: all .5s ease-in-out;
 }
 
+.to-about.slide.ng-enter {
+  transform: translateX(100%);
+}
 .slide.ng-enter:not(.to-about) {
   transform: translateX(0);
   z-index: -100;
 }
 
-.slide.ng-enter-active:not(.to-about) {
-  transform: translateX(0);
+.slide.ng-enter-active {
+  transform:translateX(0);
 }
 
+.slide.ng-leave {
+  transform:translateX(0);
+}
 
-.slide.ng-leave:not(.to-about) {
+.to-about.slide.ng-leave-active {
   transform:translateX(0);
 }
 
@@ -157,21 +163,6 @@ nav {
   transform: translateX(100%);
 }
 
-.to-about.slide.ng-enter {
-  transform: translateX(100%);
-}
 .to-about.slide.ng-enter, .to-about.slide.ng-enter-active {
   z-index: 100;
-}
-
-.to-about.slide.ng-enter-active {
-  transform:translateX(0);
-}
-
-.to-about.slide.ng-leave {
-  transform:translateX(0);
-}
-
-.to-about.slide.ng-leave-active {
-  transform:translateX(0);
 }
