@@ -7,13 +7,13 @@
     $stateProvider
 
     .state('home', {
-      template: "<div ui-view ng-class='{\"on-about\": location.onAbout}' class='slide'></div>",
-      controller: 'homeCtrl',
-      controllerAs: "home"
+      templateUrl: "./html/general/home.html",
+      controller: 'HomeCtrl',
+      controllerAs: "Home"
     })
     .state('home.landing',{
       url: '/',
-      templateUrl: '/html/general/home.html'
+      templateUrl: '/html/general/landing.html'
     })
     .state('home.about',{
       url: '/about',

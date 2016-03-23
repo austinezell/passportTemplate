@@ -119,10 +119,6 @@ nav {
   }
 }
 
-// .ui-view-container {
-//   position: relative;
-//   height: 65px;
-// }
 .about{
   background-color: white;
 }
@@ -131,26 +127,51 @@ nav {
   width: 100vw;
   border-left: 1px solid $primary;
 }
+.container {
+  width: 100%;
+  height: 100%;
+}
 
-[ui-view].slide.ng-enter, [ui-view].slide.ng-leave {
+.slide.ng-enter, .slide.ng-enter-active, .slide.ng-leave-active, .slide.ng-leave {
   position: absolute;
   left: 0;
   right: 0;
   transition: all .5s ease-in-out;
 }
 
-[ui-view].slide.ng-enter {
+.slide.ng-enter:not(.to-about) {
+  transform: translateX(0);
+  z-index: -100;
+}
+
+.slide.ng-enter-active:not(.to-about) {
+  transform: translateX(0);
+}
+
+
+.slide.ng-leave:not(.to-about) {
+  transform:translateX(0);
+}
+
+.slide.ng-leave-active:not(.to-about) {
   transform: translateX(100%);
 }
 
-[ui-view].slide.ng-enter-active {
-  transform: translateX(0);
+.to-about.slide.ng-enter {
+  transform: translateX(100%);
+}
+.to-about.slide.ng-enter, .to-about.slide.ng-enter-active {
+  z-index: 100;
 }
 
-[ui-view].slide.ng-leave {
-  transform: translateX(0);
+.to-about.slide.ng-enter-active {
+  transform:translateX(0);
 }
 
-[ui-view].slide.ng-leave-active {
+.to-about.slide.ng-leave {
+  transform:translateX(0);
+}
+
+.to-about.slide.ng-leave-active {
   transform:translateX(0);
 }

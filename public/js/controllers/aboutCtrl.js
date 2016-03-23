@@ -1,7 +1,7 @@
 (function(){
   'use strict';
   angular.module('scaffold')
-  .controller('homeCtrl', homeCtrl);
+  .controller('HomeCtrl', HomeCtrl);
 
   function aboutCtrl(){
 

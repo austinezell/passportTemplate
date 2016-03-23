@@ -1,13 +1,17 @@
 (function(){
   'use strict';
   angular.module('scaffold')
-  .controller('homeCtrl', homeCtrl);
+  .controller('HomeCtrl', HomeCtrl);
 
-  function homeCtrl(){
+  HomeCtrl.$inject = ["$scope", "$state"]
 
+  function HomeCtrl($scope, $state){
     let vm = this;
-    console.log(vm);
-    vm.location ={};
 
-  }
-})()
+    $scope.$watch(
+      ()=>$state.current.name,
+      (current, previous)=>{
+        $scope.toAbout = current === "home.about";
+      })
+    }
+  })()
