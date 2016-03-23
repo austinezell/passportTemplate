@@ -129,9 +129,9 @@ nav {
   z-index: 10;
 }
 .container {
-  border-left: 1px solid $primary;
-  width: 100%;
-  height: 100%;
+  height: calc(100vh - 50px);
+  width: 90%;
+  margin: 0 auto;
 }
 
 .slide.ng-enter, .slide.ng-enter-active, .slide.ng-leave-active, .slide.ng-leave {
@@ -164,6 +164,7 @@ nav {
 
 .to-about.slide.ng-leave-active {
   transform:translateX(0);
+  z-index: 50;
 }
 .slide.ng-leave-active:not(.to-about) {
   transform: translateX(100%);
